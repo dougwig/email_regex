@@ -22,7 +22,9 @@ class EmailRegexTest < Test::Unit::TestCase
     	'doug.test@a.com',
     	'doug+test@a.com',
     	'a@f-w.junk',
-    	'a@f_w.junk'       # this is an illegal DNS name, but in common use	
+    	'a@f_w.junk',       # this is an illegal DNS name, but in common use	
+    	"user@exa%%mple", 
+    	"invalid@email%%", 
     ]
     good.each do |x|
       assert x =~ EmailRegex::EMAIL_ADDRESS_REGEX
@@ -43,10 +45,18 @@ class EmailRegexTest < Test::Unit::TestCase
     	'""@a',
     	'doug',
     	'doug,jim',
-    	'"hello`reboot`goodbye"@example.com'
+    	'"hello`reboot`goodbye"@example.com',
+    	"", 
+    	" ", 
+    	"invalidemail", 
+    	"invalid.email", 
+      "invalid@email,com"
     ]
     bad.each do |x|
-      assert (not x =~ EmailRegex::EMAIL_ADDRESS_REGEX)
+      if x =~ EmailRegex::EMAIL_ADDRESS_REGEX
+        puts "expected bad: #{x}"
+        assert false
+      end
     end
   end
 end
