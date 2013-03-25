@@ -1,6 +1,6 @@
 #email_regex
 
-Author: [email](mailto:doug@parksidesoftware.com)
+Author: [Doug Wiegley](mailto:doug@parksidesoftware.com)
 
 ##Description
 
