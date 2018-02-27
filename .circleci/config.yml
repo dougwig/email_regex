@@ -24,4 +24,4 @@ jobs:
           name: run tests
           command: |
             mkdir /tmp/test-results
-	    rake tests
+            rake tests
